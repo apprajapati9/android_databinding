@@ -126,6 +126,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/btnPlus"
+                    android:layout_margin="@dimen/space_5"
                     android:onClick="@{() -> weather.incrementTemp()}"
                     android:textSize="18sp"/>
                 <Button
@@ -133,6 +134,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/btnMinus"
+                    android:layout_margin="@dimen/space_5"
                     android:onClick="@{() -> weather.decreaseTemp()}"
                     android:textSize="18sp"/>
             </LinearLayout>

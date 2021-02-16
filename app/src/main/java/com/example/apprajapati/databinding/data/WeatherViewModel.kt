@@ -29,4 +29,11 @@ class WeatherViewModel: ViewModel() {
     fun decreaseTemp(){
         _current_temp.value = _current_temp.value?.minus(1)
     }
+
+    fun increaseWindChill(){
+        _current_windchill.value = _current_windchill.value?.plus(1)
+    }
+    fun decreaseWindChill(){
+        _current_windchill.value = _current_windchill.value?.minus(1)
+    }
 }

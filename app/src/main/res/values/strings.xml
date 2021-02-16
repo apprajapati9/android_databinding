@@ -11,6 +11,7 @@
     <string name="btnViewmodel">View Model Binding</string>
     <string name="title_activity_view_mod_example">ViewModExample</string>
     <string name="edit_temp">Change the temperature:</string>
+    <string name="edit_windchill">Change the windchill:</string>
     <string name="btnPlus">+</string>
     <string name="btnMinus">-</string>
     <string name="tempInF">"Temp. in F: "</string>
