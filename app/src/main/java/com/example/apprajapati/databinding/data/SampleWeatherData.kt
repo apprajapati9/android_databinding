@@ -3,7 +3,7 @@ package com.example.apprajapati.databinding.data
 data class SampleWeatherData(
     val temp: Int,
     val conditions: String,
-    val windChild:Int,
+    val windChill:Int,
     val units: String) {
 
     fun convertToF(): Int{

@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
@@ -25,7 +23,7 @@
                 android:id="@+id/textView2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/current_temp"
+                android:text="@string/temp"
                 android:textSize="24sp" />
 
             <TextView
@@ -48,7 +46,7 @@
                 android:id="@+id/textView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/current_cond"
+                android:text="@string/condtions"
                 android:textSize="24sp" />
 
             <TextView
@@ -80,7 +78,7 @@
                 android:layout_marginStart="8dp"
                 android:textSize="24sp"
                 android:textStyle="bold"
-                tools:text="@{String.valueOf(weather.windchill)}"/>
+                tools:text="@{String.valueOf(weather.windChill)}"/>
         </LinearLayout>
 
         <LinearLayout
@@ -102,7 +100,7 @@
                 android:layout_marginStart="8dp"
                 android:textSize="24sp"
                 android:textStyle="bold"
-                tools:text="@{String.valueOf(weather.temp - weather.windchill)}"/>
+                tools:text="@{String.valueOf(weather.temp - weather.windChill)}"/>
         </LinearLayout>
 
         <LinearLayout
