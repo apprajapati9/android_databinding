@@ -36,6 +36,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:text="@{Integer.toString(weather.current_temp)}"
+                android:textColor="@{weather.current_temp}"
                 android:textSize="24sp"
                 android:textStyle="bold"
                 tools:text="TEMP" />
@@ -90,7 +91,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:hideIfZero="@{weather.current_windchill}"
+            android:hideIfZero="@{weather.current_windchill}"
             android:orientation="horizontal">
 
             <!-- With the help of adapters, we can perform complex logic on views that cannot be possible in xml
@@ -187,7 +188,7 @@
                     android:layout_margin="5dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    app:disableButtonAtZeroWindchill="@{weather.current_windchill}"
+                    android:disableButtonAtZeroWindchill="@{weather.current_windchill}"
                     android:onClick="@{() -> weather.decreaseWindChill()}"
                     android:text="@string/btnMinus"
                     android:textSize="18sp" />
