@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <import type="com.example.apprajapati.databinding.binding_adapters.Converter"/>
+        <variable
+            name="weather"
+            type="com.example.apprajapati.databinding.data.WeatherViewModel" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".TwoWayExample">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:labelFor="@+id/edCurTemp"
+                android:text="@string/temp"
+                android:textSize="24sp" />
+
+                        <TextView
+                            android:id="@+id/edCurTemp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@{String.valueOf(weather.current_temp)}"
+                            android:textSize="24sp"
+                            android:textStyle="bold"
+                            android:layout_marginStart="8dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal">
+                        <Button
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/btnPlus"
+                            android:textSize="18sp"
+                            android:layout_margin="@dimen/space_5"
+                            android:onClick="@{() -> weather.incrementTemp()}"/>
+                        <Button
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/btnMinus"
+                            android:textSize="18sp"
+                            android:layout_margin="@dimen/space_5"
+                            android:onClick="@{() -> weather.decreaseTemp()}"/>
+        </LinearLayout>
+
+        <SeekBar
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:max="50"
+            android:progress="@={weather.current_temp}"
+            android:min="-50" />
+        <!-- read more about two way data binding
+         https://developer.android.com/topic/libraries/data-binding/two-way
+
+         @= sign enables two way data binding.
+         -->
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="24sp"
+                            android:text="@{Converter.tempToDescription(weather.current_temp)}"
+                            android:textStyle="bold"
+                            tools:text="TEMP"/>
+        </LinearLayout>
+    </LinearLayout>
+</layout>
