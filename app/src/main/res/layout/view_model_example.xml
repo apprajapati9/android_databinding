@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <import type="android.view.View"/>
+        <!-- you can import such packages to access certain xml attributes, such as
+         View.Visible in windchill button to control visibility real time -->
+        <variable
+            name="weather"
+            type="com.example.apprajapati.databinding.data.WeatherViewModel" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="16dp"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/labelCurrentTemp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/temp"
+                android:textSize="24sp" />
+
+            <TextView
+                android:id="@+id/fieldCurrentTemp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:text="@{Integer.toString(weather.current_temp)}"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                tools:text="TEMP" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/labelConditions"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/condtions"
+                android:textSize="24sp" />
+
+            <TextView
+                android:id="@+id/fieldConditions"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:text="@{weather.current_conditions}"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                tools:text="TEMP" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/labelWindChill"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/wind_chill"
+                android:textSize="24sp" />
+
+            <TextView
+                android:id="@+id/fieldWindChill"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:text="@{Integer.toString(weather.current_windchill)}"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                tools:text="TEMP" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:hideIfZero="@{weather.current_windchill}"
+            android:orientation="horizontal">
+
+            <!-- With the help of adapters, we can perform complex logic on views that cannot be possible in xml
+        setting android:visibility="@{weather.current_windchill > 0 ? View.VISIBLE : View.GONE}" is an example,
+        we can move this in bindingadapters to provide cleaner and better logic on view changes
+
+        we can create custom hideIfZero attribute in BindingAdapters.kt,
+        so we don't have to do set visibility logic here in xml.
+        -->
+
+            <TextView
+                android:id="@+id/labelFeelsLike"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/feels_like"
+                android:textSize="24sp" />
+
+            <TextView
+                android:id="@+id/fieldFeelsLike"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:text="@{Integer.toString(weather.current_temp - weather.current_windchill)}"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                tools:text="TEMP" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:text="@string/edit_temp"
+                android:textSize="24sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/btnTempUp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:onClick="@{() -> weather.incrementTemp()}"
+                    android:text="@string/btnPlus"
+                    android:textSize="18sp" />
+
+                <Button
+                    android:id="@+id/btnTempDown"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:onClick="@{() -> weather.decreaseTemp()}"
+                    android:text="@string/btnMinus"
+                    android:textSize="18sp" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+</layout>
