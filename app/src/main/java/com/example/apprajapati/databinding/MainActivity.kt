@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
+import android.widget.TextView
 
 object TestData{
     const val temp = 38
@@ -17,6 +18,9 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
 
+        findViewById<TextView>(R.id.currenttemp).setText("${TestData.temp}")
+        findViewById<TextView>(R.id.curcond).setText(TestData.conditions)
+        findViewById<TextView>(R.id.windchill).setText("${TestData.windchill}")
 
         findViewById<Button>(R.id.simplebind).setOnClickListener{
             startActivity(Intent(this, SimpleDataBindingExample::class.java))
